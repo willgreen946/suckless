@@ -37,6 +37,7 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	//I added these under here
 	//These make it so software opens the pages I want them to
+	{ "Surf",     NULL,	  NULL,	      1 << 8,	    0,		 -1 }, 
 	{ "st",	      NULL,	  NULL,       1 << 1,       0,           -1 }, 
 	{ "Pcmanfm",  NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Mousepad", NULL,       NULL,       1 << 4,       0,           -1 },
@@ -51,11 +52,16 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
+#include "tcl.c" 
+#include "fibonacci.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "",      tile },    /* first entry is default */
 	{ "",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+	{ "",      monocle },
+ 	{ "",      spiral },
+ 	{ "",      dwindle },
+	{ "||",		tcl },
 };
 
 /* key definitions */
@@ -82,41 +88,50 @@ static const char *firefox[] = {"firefox", NULL}; //Open firefox
 static const char *email[] = {"thunderbird", NULL}; //Open an email client
 static const char *virtualbox[] = {"VirtualBox", NULL}; //Open virtualbox
 static const char *vlc[] = {"vlc", NULL}; //Open vlc media player
+static const char *surf[] = {"surf", NULL}; //Open surf
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	//Not in use
+	//{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	//{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
+	//{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
+	//{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
+	//{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_z,      killclient,     {0} }, //closes the program
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	//Commands I added
-	{ MODKEY,			XK_v,	   spawn,	   {.v = vlc }},
+	//Layout bindings
+	{ MODKEY|ShiftMask,             XK_a,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_s,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_d,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,             XK_h,      setlayout,      {.v = &layouts[5]} },
+	//Not in use
+	//{ MODKEY,                       XK_space,  setlayout,      {0} },
+	//{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	//{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	//{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	//{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	//{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	//Bindings I added
+	{ MODKEY,			XK_v,	   spawn,	   {.v = vlc } }, //Should open vlc
+	{ MODKEY,			XK_s,	   spawn, 	   {.v = surf } }, //Should open surf
 	{ MODKEY,			XK_m,	   spawn,	   {.v = mousepad } }, //Should open mousepad
 	{ MODKEY,			XK_e,	   spawn, 	   {.v = email } }, //Should open an email client
 	{ MODKEY,			XK_f,	   spawn,	   {.v = files } }, //Should open my file manager
 	{ MODKEY, 			XK_t,	   spawn,	   {.v = terminal } }, //Should open a terminal
-	{ MODKEY, 			XK_w,	   spawn,	   {.v = firefox } }, //Should open firefox 
+	{ MODKEY, 			XK_x,	   spawn,	   {.v = firefox } }, //Should open firefox 
 	{ MODKEY|ShiftMask,		XK_v,	   spawn,	   {.v = virtualbox } }, //Should open virtual box
-	//End of keys I added	
+	TAGKEYS(			XK_w,      		   8) //w stands for "web" so I want it to take me the the "web" page which is page 9
+	
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
