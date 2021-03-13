@@ -12,7 +12,7 @@ static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#03A062"; //this is the border around the window
 static const char col_gray3[]       = "#ffffff"; //the numbers on the bar 
 static const char col_gray4[]       = "#000000"; 
-static const char col_cyan[]        = "#03A062";
+static const char col_cyan[]        = "#03a062";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -93,14 +93,14 @@ static const char *surf[] = {"surf", NULL}; //Open surf
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	//Not in use
-	//{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	//{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	//{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	//{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
-	//{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	//{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY|ShiftMask,	        XK_b,      togglebar,      {0} },
+
+	{ MODKEY,                       XK_z,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_x,      focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_c,      incnmaster,     {.i = +1 } },
+	{ MODKEY,	                XK_v,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_b,      setmfact,       {.f = -0.05} },
+	{ MODKEY,                       XK_n,      setmfact,       {.f = +0.05} },
 
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
@@ -122,14 +122,13 @@ static Key keys[] = {
 	//{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	//{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	//Bindings I added
-	{ MODKEY,			XK_v,	   spawn,	   {.v = vlc } }, //Should open vlc
+	{ MODKEY|ShiftMask,		XK_v,	   spawn,	   {.v = vlc } }, //Should open vlc
 	{ MODKEY,			XK_s,	   spawn, 	   {.v = surf } }, //Should open surf
 	{ MODKEY,			XK_m,	   spawn,	   {.v = mousepad } }, //Should open mousepad
 	{ MODKEY,			XK_e,	   spawn, 	   {.v = email } }, //Should open an email client
 	{ MODKEY,			XK_f,	   spawn,	   {.v = files } }, //Should open my file manager
 	{ MODKEY, 			XK_t,	   spawn,	   {.v = terminal } }, //Should open a terminal
-	{ MODKEY, 			XK_x,	   spawn,	   {.v = firefox } }, //Should open firefox 
-	{ MODKEY|ShiftMask,		XK_v,	   spawn,	   {.v = virtualbox } }, //Should open virtual box
+	{ MODKEY|ShiftMask, 		XK_n,	   spawn,	   {.v = firefox } }, //Should open firefox 
 	TAGKEYS(			XK_w,      		   8) //w stands for "web" so I want it to take me the the "web" page which is page 9
 	
 	TAGKEYS(                        XK_1,                      0)
