@@ -98,22 +98,22 @@ static const char *colorname[] = {
 	/* 8 normal colors */
 	"#000000",//background color
 	"#03a062",//text color 
-	"#00ff00",//void xxx color
-	"#00ff00",
-	"#00644b",//comment color
-	"#00ff00",
-	"#00ff00",
-	"#c0c0c0",
+	"#19d423",//highlighting
+	"#7ac47a",
+	"#90adad",//comment color
+	"#15b374",
+	"#029e02",
+	"#ffffff",
 
 	/* 8 bright colors */
-	"#c0c0c0",
+	"#ffffff",
 	"#00ff00",//neofetch left text color
-	"#00ff00",//void xxx color
-	"#00ff00",//dont know the exacts on these colors so bright green will do
-	"#00ff00",
-	"#00ff00",
-	"#00ff00",
-	"#00ff00", 
+	"#15fa05",//void xxx color
+	"#58e05e",//dont know the exacts on these colors so bright green will do
+	"#19d16c",
+	"#22b80b",
+	"#32e60e",
+	"#17bf1a", 
 
 	[255] = 0,
 
@@ -139,7 +139,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 6;
 
 /*
  * Default columns and rows numbers
