@@ -9,7 +9,7 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "freesans:size=12" };
 static const char dmenufont[]       = "freesans:size=12";
 static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#03A062"; //this is the border around the window
+static const char col_gray2[]       = "#084A30"; //this is the border around the window
 static const char col_gray3[]       = "#ffffff"; //the numbers on the bar 
 static const char col_gray4[]       = "#000000"; 
 static const char col_cyan[]        = "#03a062";
