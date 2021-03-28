@@ -1,18 +1,24 @@
 /* See LICENSE file for copyright and license details. */
-
+/*Quick overview of key bindings
+ *
+ * alt+shif+z closes a window alt+shift+space opens chromium alt+d opens dmenu alt+numbers goes to different windows
+ * alt+x or z switches between windows alt+c or v changes orientation of windows alt+b or n resizes windows normally 
+ * alt+shift+ a or s or d or f or g or h changes the tiling mode alt+left mouse in floating mode moves window alt+right mouse
+ * resizes window in floating mode.
+ * I wrote this so you can get some basic functionality out of this*/
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "freesans:size=12" };
-static const char dmenufont[]       = "freesans:size=12";
+static const char *fonts[]          = { "ubuntu:size=12" };
+static const char dmenufont[]       = "ubuntu:size=12";
 static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#084A30"; //this is the border around the window
+static const char col_gray2[]       = "#282828"; //this is the border around the window
 static const char col_gray3[]       = "#ffffff"; //the numbers on the bar 
 static const char col_gray4[]       = "#000000"; 
-static const char col_cyan[]        = "#03a062";
+static const char col_cyan[]        = "#0a84ff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -34,7 +40,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Chromium",  NULL,       NULL,       1 << 8,       0,           -1 },
 	//I added these under here
 	//These make it so software opens the pages I want them to
 	{ "Surf",     NULL,	  NULL,	      1 << 8,	    0,		 -1 }, 
@@ -84,7 +90,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *terminal[] = {"st", NULL}; //Open a terminal
 static const char *files[] = {"pcmanfm", NULL}; //Open pcmanfm
 static const char *mousepad[] = {"mousepad", NULL}; //Open mousepad
-static const char *firefox[] = {"firefox", NULL}; //Open firefox
+static const char *chromium[] = {"chromium", NULL}; //chromium
 static const char *email[] = {"thunderbird", NULL}; //Open an email client
 static const char *virtualbox[] = {"VirtualBox", NULL}; //Open virtualbox
 static const char *vlc[] = {"vlc", NULL}; //Open vlc media player
@@ -95,13 +101,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,	        XK_b,      togglebar,      {0} },
 
-	{ MODKEY,                       XK_z,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_x,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_c,      incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_z,      focusstack,     {.i = +1 } },   //moves between the windows
+	{ MODKEY,                       XK_x,      focusstack,     {.i = -1 } },   //moves between the windows
+	{ MODKEY,                       XK_c,      incnmaster,     {.i = +1 } },    
 	{ MODKEY,	                XK_v,      incnmaster,     {.i = -1 } },
-	{ MODKEY,                       XK_b,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_n,      setmfact,       {.f = +0.05} },
-
+	{ MODKEY,                       XK_b,      setmfact,       {.f = -0.05} }, //resizes the window
+	{ MODKEY,                       XK_n,      setmfact,       {.f = +0.05} }, //resizes the window
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_z,      killclient,     {0} }, //closes the program
@@ -128,7 +133,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_e,	   spawn, 	   {.v = email } }, //Should open an email client
 	{ MODKEY,			XK_f,	   spawn,	   {.v = files } }, //Should open my file manager
 	{ MODKEY, 			XK_t,	   spawn,	   {.v = terminal } }, //Should open a terminal
-	{ MODKEY|ShiftMask, 		XK_n,	   spawn,	   {.v = firefox } }, //Should open firefox 
+	{ MODKEY|ShiftMask, 		XK_space,	   spawn,	   {.v = chromium } }, //Should open chromium
 	TAGKEYS(			XK_w,      		   8) //w stands for "web" so I want it to take me the the "web" page which is page 9
 	
 	TAGKEYS(                        XK_1,                      0)
