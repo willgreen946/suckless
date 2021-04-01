@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "mono:pixelsize=15:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "ubuntu mono:pixelsize=15:antialias=true:autohint=true";
+static int borderpx = 8;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -94,36 +94,37 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 //alpha patch opacity
-float alpha = 0.6;
+float alpha = 0.8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#000000",//background color
-	"#03a062",//text color 
-	"#19d423",//highlighting
-	"#7ac47a",
-	"#90adad",//comment color
-	"#15b374",
-	"#029e02",
-	"#ffffff",
+	"#000000", //background color
+	"#ffffff", //text color
+	"#0a84ff", //function highlight for reference
+	"#333333",
+	"#aea79f", //comment color
+	"#3d3d46",
+	"#52525d",
+	"#242b64",
 
 	/* 8 bright colors */
-	"#ffffff",
-	"#00ff00",//neofetch left text color
-	"#15fa05",//void xxx color
-	"#58e05e",//dont know the exacts on these colors so bright green will do
-	"#19d16c",
-	"#22b80b",
-	"#32e60e",
-	"#17bf1a", 
+	"#2e3347",
+	"#00503c", //insert in vim for reference
+	"#0c1559", 
+	"#4e5180",
+	"#5c5cff",
+	"#3c4256",
+	"#ffffff", //neofetch logo for reference
+	"#00503c", 
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
-	"#ffffff", //cursor color 
-	"#03a062", 
+	"#cccccc",
+	"#555555",
 };
+
 
 
 /*
@@ -142,7 +143,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 6;
+static unsigned int cursorshape = 2;
 
 /*
  * Default columns and rows numbers
