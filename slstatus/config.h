@@ -65,10 +65,13 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ hostname,  "     [%s]     ",	    NULL},
-	{ disk_perc, "[DISK %s%%]     ",   "/"},
-	{ cpu_perc, "[CPU  %s%%]     ",	    NULL},
-	{ ram_perc, "[RAM  %s%%]     ",	    NULL},
-	{ datetime, "[%s]     ",  	    "%F"},
+	//Laptop functions
+	//Wont have any use on a desktop
+	{battery_perc, "[BAT  %s%%]    ", "BAT0"},
+	//Universal functions
+	{ disk_perc, "[DISK  %s%%]    ",   "/"},
+	{ cpu_perc, "[CPU  %s%%]    ",	    NULL},
+	{ ram_perc, "[RAM  %s%%]    ",	    NULL},
+	{ datetime, "[%s]    ",  	    "%F %r"},
 
 };
