@@ -101,21 +101,21 @@ static const char *colorname[] = {
 	/* 8 normal colors */
 	"#000000", //background color
 	"#ffffff", //text color
-	"#0a84ff", //function highlight for reference
+	"#61538d", //function highlight for reference
 	"#333333",
-	"#aea79f", //comment color
-	"#3d3d46",
-	"#52525d",
-	"#242b64",
+	"#d9edf7", //comment color
+	"#dddfff",
+	"#e1e1e1",
+	"#d9534f",
 
 	/* 8 bright colors */
 	"#2e3347",
-	"#00503c", //insert in vim for reference
+	"#73d216", //insert in vim for reference
 	"#0c1559", 
 	"#4e5180",
 	"#5c5cff",
 	"#3c4256",
-	"#ffffff", //neofetch logo for reference
+	"#6e56af", //neofetch logo for reference
 	"#00503c", 
 
 	[255] = 0,
