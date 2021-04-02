@@ -7,6 +7,11 @@ Requirements
 ------------
 In order to build dwm you need the Xlib header files.
 
+/*Wills comment*/
+Since I have added fonts you are going to need the following packages for Arch:
+ttf-ubuntu-font-family
+ttf-font-awesome
+This goes for st aswell
 
 Installation
 ------------

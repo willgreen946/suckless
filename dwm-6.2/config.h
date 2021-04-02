@@ -31,18 +31,19 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "","","","", "", "", "", "", "" }; //To use these logos you need to install the 'font-awesome' package
+static const char *tags[] = { "", "", ""}; //Less tags version
+//static const char *tags[] = { "","","","", "", "", "", "", "" }; //To use these logos you need to install the 'font-awesome' package
 
-static const Rule rules[] = {
-	/* xprop(1):
-	 *	WM_CLASS(STRING) = instance, class
-	 *	WM_NAME(STRING) = title
-	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
+
+//Rules for the more tags variant
+/*static const Rule rules[] = {
+	// xprop(1):
+	//	WM_CLASS(STRING) = instance, class
+	//	WM_NAME(STRING) = title
+	//
+	// class      instance    title       tags mask     isfloating   monitor 
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
 	{ "Chromium",  NULL,       NULL,       1 << 8,       0,           -1 },
-	//I added these under here
-	//These make it so software opens the pages I want them to
 	{ "Surf",     NULL,	  NULL,	      1 << 8,	    0,		 -1 }, 
 	{ "st",	      NULL,	  NULL,       1 << 1,       0,           -1 }, 
 	{ "Pcmanfm",  NULL,       NULL,       1 << 3,       0,           -1 },
@@ -51,7 +52,15 @@ static const Rule rules[] = {
 	{ "Thunderbird", NULL,    NULL,       1 << 5,       0,           -1 },
 	{ "VirtualBox",  NULL,    NULL,       1 << 7,       0,           -1 }, 
 	{ "vlc", 	 NULL, 	  NULL,       1 << 6,	    0, 	         -1 }, 
+};*/
+
+//Rules for less tags variant
+static const Rule rules[] = {
+	{ "Chromium",  NULL, NULL,       1 << 2,       0,           -1 },
+	{ "Surf",     NULL,	  NULL,	      1 << 2,	    0,		 -1 }, 
+	{ "st",	      NULL,	  NULL,       1 << 1,       0,           -1 }, 
 };
+
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
@@ -95,9 +104,10 @@ static const char *email[] = {"thunderbird", NULL}; //Open an email client
 static const char *virtualbox[] = {"VirtualBox", NULL}; //Open virtualbox
 static const char *vlc[] = {"vlc", NULL}; //Open vlc media player
 static const char *surf[] = {"surf", NULL}; //Open surf
+static const char *terminator[] = {"terminator", NULL}; //Open terminator
 
-static Key keys[] = {
-	/* modifier                     key        function        argument */
+/*Longer tags key bindings*//*static Key keys[] = {
+	// modifier                     key        function        argument 
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,	        XK_b,      togglebar,      {0} },
 
@@ -133,8 +143,61 @@ static Key keys[] = {
 	{ MODKEY,			XK_e,	   spawn, 	   {.v = email } }, //Should open an email client
 	{ MODKEY,			XK_f,	   spawn,	   {.v = files } }, //Should open my file manager
 	{ MODKEY, 			XK_t,	   spawn,	   {.v = terminal } }, //Should open a terminal
-	{ MODKEY|ShiftMask, 		XK_space,	   spawn,	   {.v = chromium } }, //Should open chromium
+	{ MODKEY|ShiftMask, 		XK_space,  spawn,	   {.v = chromium } }, //Should open chromium
 	TAGKEYS(			XK_w,      		   8) //w stands for "web" so I want it to take me the the "web" page which is page 9
+	
+	TAGKEYS(                        XK_1,                      0)
+	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
+	TAGKEYS(                        XK_5,                      4)
+	TAGKEYS(                        XK_6,                      5)
+	TAGKEYS(                        XK_7,                      6)
+	TAGKEYS(                        XK_8,                      7)
+	TAGKEYS(                        XK_9,                      8)
+	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+};*/
+
+/*Shorter tags key bindings*/static Key keys[] = {
+	// modifier                     key        function        argument 
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,	        XK_b,      togglebar,      {0} },
+
+	{ MODKEY,                       XK_z,      focusstack,     {.i = +1 } },   //moves between the windows
+	{ MODKEY,                       XK_x,      focusstack,     {.i = -1 } },   //moves between the windows
+	{ MODKEY,                       XK_c,      incnmaster,     {.i = +1 } },    
+	{ MODKEY,	                XK_v,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_b,      setmfact,       {.f = -0.05} }, //resizes the window
+	{ MODKEY,                       XK_n,      setmfact,       {.f = +0.05} }, //resizes the window
+	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY|ShiftMask,             XK_z,      killclient,     {0} }, //closes the program
+	//Layout bindings
+	{ MODKEY|ShiftMask,             XK_a,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ShiftMask,             XK_s,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ShiftMask,             XK_d,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ShiftMask,             XK_g,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY|ShiftMask,             XK_h,      setlayout,      {.v = &layouts[5]} },
+	//Not in use
+	//{ MODKEY,                       XK_space,  setlayout,      {0} },
+	//{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	//{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	//{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	//{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
+	//{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	//{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+	//{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	//Bindings I added
+	{ MODKEY|ShiftMask,		XK_v,	   spawn,	   {.v = vlc } }, //Should open vlc
+	{ MODKEY,			XK_s,	   spawn, 	   {.v = surf } }, //Should open surf
+	{ MODKEY,			XK_m,	   spawn,	   {.v = mousepad } }, //Should open mousepad
+	{ MODKEY,			XK_e,	   spawn, 	   {.v = email } }, //Should open an email client
+	{ MODKEY,			XK_f,	   spawn,	   {.v = files } }, //Should open my file manager
+	{ MODKEY, 			XK_t,	   spawn,	   {.v = terminal } }, //Should open a terminal
+	{ MODKEY|ShiftMask, 		XK_t,	   spawn, 	   {.v = terminator } }, //To open terminator
+	{ MODKEY|ShiftMask, 		XK_space,  spawn,	   {.v = chromium } }, //Should open chromium
+	TAGKEYS(			XK_w,      		   2) //w stands for "web" so I want it to take me the the "web" page which is page 9
 	
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
