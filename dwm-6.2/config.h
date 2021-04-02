@@ -15,10 +15,10 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "ubuntu:size=12" };
 static const char dmenufont[]       = "ubuntu:size=12";
 static const char col_gray1[]       = "#000000";
-static const char col_gray2[]       = "#282828"; //this is the border around the window
+static const char col_gray2[]       = "#dddaec"; //this is the border around the window
 static const char col_gray3[]       = "#ffffff"; //the numbers on the bar 
 static const char col_gray4[]       = "#000000"; 
-static const char col_cyan[]        = "#0a84ff";
+static const char col_cyan[]        = "#54487a";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
