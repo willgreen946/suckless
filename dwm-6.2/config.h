@@ -43,7 +43,7 @@ static const char *tags[] = { "", "", ""}; //Less tags version
 	//
 	// class      instance    title       tags mask     isfloating   monitor 
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Chromium",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Surf",     NULL,	  NULL,	      1 << 8,	    0,		 -1 }, 
 	{ "st",	      NULL,	  NULL,       1 << 1,       0,           -1 }, 
 	{ "Pcmanfm",  NULL,       NULL,       1 << 3,       0,           -1 },
@@ -56,7 +56,7 @@ static const char *tags[] = { "", "", ""}; //Less tags version
 
 //Rules for less tags variant
 static const Rule rules[] = {
-	{ "Chromium",  NULL, NULL,       1 << 2,       0,           -1 },
+	{ "firefox",  NULL, NULL,       1 << 2,       0,           -1 },
 	{ "Surf",     NULL,	  NULL,	      1 << 2,	    0,		 -1 }, 
 	{ "st",	      NULL,	  NULL,       1 << 1,       0,           -1 }, 
 };
@@ -99,7 +99,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *terminal[] = {"st", NULL}; //Open a terminal
 static const char *files[] = {"pcmanfm", NULL}; //Open pcmanfm
 static const char *mousepad[] = {"mousepad", NULL}; //Open mousepad
-static const char *chromium[] = {"chromium", NULL}; //chromium
+static const char *firefox[] = {"firefox", NULL}; //firefox
 static const char *email[] = {"thunderbird", NULL}; //Open an email client
 static const char *virtualbox[] = {"VirtualBox", NULL}; //Open virtualbox
 static const char *vlc[] = {"vlc", NULL}; //Open vlc media player
@@ -196,7 +196,7 @@ static const char *terminator[] = {"terminator", NULL}; //Open terminator
 	{ MODKEY,			XK_f,	   spawn,	   {.v = files } }, //Should open my file manager
 	{ MODKEY, 			XK_t,	   spawn,	   {.v = terminal } }, //Should open a terminal
 	{ MODKEY|ShiftMask, 		XK_t,	   spawn, 	   {.v = terminator } }, //To open terminator
-	{ MODKEY|ShiftMask, 		XK_space,  spawn,	   {.v = chromium } }, //Should open chromium
+	{ MODKEY|ShiftMask, 		XK_space,  spawn,	   {.v = firefox } }, //Should open chromium
 	TAGKEYS(			XK_w,      		   2) //w stands for "web" so I want it to take me the the "web" page which is page 9
 	
 	TAGKEYS(                        XK_1,                      0)
