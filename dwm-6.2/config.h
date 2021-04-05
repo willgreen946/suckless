@@ -12,8 +12,8 @@ static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "ubuntu:size=12" };
-static const char dmenufont[]       = "ubuntu:size=12";
+static const char *fonts[]          = { "terminus:size=12" };
+static const char dmenufont[]       = "terminus:size=12";
 static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#dddaec"; //this is the border around the window
 static const char col_gray3[]       = "#ffffff"; //the numbers on the bar 
@@ -31,7 +31,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", ""}; //Less tags version
+static const char *tags[] = { "1", "2", "3"};
+//static const char *tags[] = { "", "", ""}; //Less tags version
 //static const char *tags[] = { "","","","", "", "", "", "", "" }; //To use these logos you need to install the 'font-awesome' package
 
 
