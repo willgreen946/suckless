@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "ubuntu mono:pixelsize=15:antialias=true:autohint=true";
+static char *font = "terminus:pixelsize=15:antialias=true:autohint=true";
 static int borderpx = 8;
 
 /*
@@ -100,29 +100,30 @@ float alpha = 0.8;
 static const char *colorname[] = {
 	/* 8 normal colors */
 	"#000000", //background color
-	"#ffffff", //text color
-	"#61538d", //function highlight for reference
-	"#333333",
-	"#d9edf7", //comment color
-	"#dddfff",
-	"#e1e1e1",
-	"#d9534f",
+	"#ff7092", //text color
+	"#00fbac", //function highlight for reference
+	"#fffa6a",
+	"#00bfff", //comment color
+	"#df95ff",
+	"#86cbfe",
+	"#ffffff",
 
 	/* 8 bright colors */
-	"#2e3347",
-	"#73d216", //insert in vim for reference
-	"#0c1559", 
-	"#4e5180",
-	"#5c5cff",
-	"#3c4256",
-	"#6e56af", //neofetch logo for reference
-	"#00503c", 
+	"#000000",
+	"#ff8aa4", //insert in vim for reference
+	"#21f6bc", 
+	"#fff787",
+	"#1bccfd",
+	"#e6aefe",
+	"#99d6fc", //neofetch logo for reference
+	"#ffffff", 
 
 	[255] = 0,
 
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
+	"#000000",
 };
 
 
