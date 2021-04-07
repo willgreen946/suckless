@@ -18,7 +18,7 @@ static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#000000"; //this is the border around the window
 static const char col_gray3[]       = "#ffffff"; //the numbers on the bar 
 static const char col_gray4[]       = "#000000"; 
-static const char col_cyan[]        = "#fafafa";
+static const char col_cyan[]        = "#ffffff";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -114,6 +114,10 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	//{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	//{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,			XK_period, setgaps,	   {.i = +1} },
+	{ MODKEY,  			XK_comma,  setgaps,	   {.i = -1} },
+	{ MODKEY|ShiftMask,		XK_period, setgaps,        {.i = 0} },
+	{ MODKEY|ShiftMask,		XK_comma,  setgaps,        {.i = 0} },
 	//Bindings I added
 	{ MODKEY|ShiftMask,		XK_v,	   spawn,	   {.v = vlc } }, //Should open vlc
 	{ MODKEY,			XK_s,	   spawn, 	   {.v = surf } }, //Should open surf
