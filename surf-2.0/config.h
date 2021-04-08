@@ -166,4 +166,4 @@ static Button buttons[] = {
 };
 
 //#define HOMEPAGE "https://duckduckgo.com/"
-#define HOMEPAGE "https://searx.me/"
+#define HOMEPAGE "https://searx.ir/"
