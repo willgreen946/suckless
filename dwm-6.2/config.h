@@ -12,13 +12,13 @@ static const unsigned int gappx     = 15;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "terminus:size=12" };
-static const char dmenufont[]       = "terminus:size=12";
+static const char *fonts[]          = { "terminus:size=10" };
+static const char dmenufont[]       = "terminus:size=10";
 static const char col_gray1[]       = "#000000";
 static const char col_gray2[]       = "#000000"; //this is the border around the window
 static const char col_gray3[]       = "#ffffff"; //the numbers on the bar 
 static const char col_gray4[]       = "#000000"; 
-static const char col_cyan[]        = "#61538d";
+static const char col_cyan[]        = "#cd0000";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -36,8 +36,8 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8"};
 //Rules for less tags variant
 static const Rule rules[] = {
 	{ "firefox",  NULL,       NULL,       1 << 7,       0,           -1 },
-	{ "Surf",     NULL,	  NULL,	      1 << 7,	    0,		 -1 }, 
-	{ "st",	      NULL,	  NULL,       1 << 1,       0,           -1 }, 
+	//{ "Surf",     NULL,	  NULL,	      1 << 7,	    0,		 -1 }, 
+	//{ "st",	      NULL,	  NULL,       1 << 1,       0,           -1 }, 
 };
 
 
@@ -83,6 +83,7 @@ static const char *email[] = {"thunderbird", NULL}; //Open an email client
 static const char *vlc[] = {"vlc", NULL}; //Open vlc media player
 static const char *surf[] = {"surf", NULL}; //Open surf
 static const char *terminator[] = {"terminator", NULL}; //Open terminator
+static const char *connmangtk[] = {"connman-gtk", NULL}; //Open connman-gtk
 
 static Key keys[] = {
 	// modifier                     key        function        argument 
@@ -91,6 +92,8 @@ static Key keys[] = {
 
 	{ MODKEY,                       XK_z,      focusstack,     {.i = +1 } },   //moves between the windows
 	{ MODKEY,                       XK_x,      focusstack,     {.i = -1 } },   //moves between the windows
+	{ MODKEY, 			XK_h,	   focusstack,	   {.i = -1} },
+	{ MODKEY,			XK_l,      focusstack,	   {.i = +1} },
 	{ MODKEY,                       XK_c,      incnmaster,     {.i = +1 } },    
 	{ MODKEY,	                XK_v,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_b,      setmfact,       {.f = -0.05} }, //resizes the window
@@ -127,8 +130,9 @@ static Key keys[] = {
 	{ MODKEY, 			XK_t,	   spawn,	   {.v = terminal } }, //Should open a terminal
 	{ MODKEY|ShiftMask, 		XK_t,	   spawn, 	   {.v = terminator } }, //To open terminator
 	{ MODKEY|ShiftMask, 		XK_space,  spawn,	   {.v = firefox } }, //Should open chromium
+	{ MODKEY|ShiftMask,		XK_c,	   spawn,  	   {.v = connmangtk } },
 	TAGKEYS(			XK_w,      		   7) //w stands for "web" so I want it to take me the the "web" page which is page 8
-	
+
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
