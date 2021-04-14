@@ -100,23 +100,23 @@ float alpha = 0.8;
 static const char *colorname[] = {
 	/* 8 normal colors */
 	"#000000", //background color
-	"#ff7092", //text color
-	"#00fbac", //function highlight for reference
-	"#fffa6a",
-	"#00bfff", //comment color
-	"#df95ff",
-	"#86cbfe",
-	"#ffffff",
+	"red3", //text color
+	"green3", //function highlight for reference
+	"yellow3",
+	"blue2", //comment color
+	"magenta3",
+	"cyan3",
+	"gray90",
 
 	/* 8 bright colors */
 	"#000000",
-	"#ff8aa4", //insert in vim for reference
-	"#21f6bc", 
-	"#fff787",
-	"#1bccfd",
-	"#e6aefe",
-	"#99d6fc", //neofetch logo for reference
-	"#ffffff", 
+	"red", //insert in vim for reference
+	"green", 
+	"yellow",
+	"#5c5cff",
+	"magenta",
+	"cyan", //neofetch logo for reference
+	"white", 
 
 	[255] = 0,
 
